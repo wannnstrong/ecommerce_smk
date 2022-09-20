@@ -19,7 +19,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(cors(corsOptions))
 
 // sync database
-db.sequelize.sync({ force: true }).then(() => {
+db.sequelize.sync({ force: false,logging:false }).then(() => {
     console.log('Drop and Resync Db');
     initial()
 });
@@ -31,14 +31,19 @@ app.listen(PORT, () => {
     console.log(`${PORT}`)
 })
 
-function initial() {
-    Role.create({
-        level_id: 1,
-        level_nama: "administrator"
+async function initial() {
+    const roles = await Role.findAll({
+        logging: false
     });
-
-    Role.create({
-        level_id: 2,
-        level_nama: "customer"
-    });
+    if(roles.length<1){
+        Role.create({
+            level_id: 1,
+            level_nama: "administrator"
+        });
+    
+        Role.create({
+            level_id: 2,
+            level_nama: "customer"
+        });
+    }
 }

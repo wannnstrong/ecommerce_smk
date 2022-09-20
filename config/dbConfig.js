@@ -1,8 +1,8 @@
 module.exports = {
-    HOST: 'localhost',
-    USER: 'root',
-    PASSWORD: '',
-    DB: 'ecommerce_smk',
+    HOST: process.env.DB_HOST,
+    USER: process.env.DB_USER,
+    PASSWORD: process.env.DV_PASSWORD,
+    DB: process.env.DB_nAME,
     dialect: 'mysql',
     pool: {
         max: 5,

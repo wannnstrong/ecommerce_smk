@@ -80,14 +80,14 @@ const login = async (req, res) => {
         user: {
             id: user.user_id,
             user_nama: user.user_nama,
-            user_email: user.user_email,
-            user_password: user.user_password,
-            user_hp: user.user_hp,
-            user_image: user.user_image,
+            // user_email: user.user_email,
+            // user_password: user.user_password,
+            // user_hp: user.user_hp,
+            // user_image: user.user_image,
             user_status: user.user_status,
-            user_level: role.level_nama,
-            createdAt: user.createdAt,
-            updatedAt: user.updatedAt,
+            // user_level: role.level_nama,
+            // createdAt: user.createdAt,
+            // updatedAt: user.updatedAt,
         },
         token: bearerToken
     })
