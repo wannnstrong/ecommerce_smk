@@ -97,7 +97,6 @@ const login = async (req, res) => {
     if (error) return res.status(400).send(error.details[0].message)
 
     const user = await User.findOne({ where: { user_email: req.body.user_email } })
-    const role = await Role.findOne({ where: { level_id: user.user_level }, include: User })
     if (!user) return res.status(400).json({data: {message: 'Invalid email!'}})
 
     const validPass = await bcrypt.compare(req.body.user_password, user.user_password)

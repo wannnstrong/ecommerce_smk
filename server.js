@@ -26,7 +26,6 @@ db.sequelize.sync({ force: false,logging:false }).then(() => {
 app.get('/', (req, res) => {
     res.send('Hello World')
 })
-app.use('/api/v1', require('./routes/userRoute'))
 app.use('/api/v1/auth', require('./routes/authRoute'))
 
 app.listen(PORT, () => {
