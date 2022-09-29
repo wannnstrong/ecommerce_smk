@@ -96,10 +96,10 @@ const login = async (req, res) => {
     const { error } = authValidation.loginValidation(req.body)
     if (error) return res.status(400).json({data: {message: error.details[0].message}})
 
-    const user = await User.findOne({ where: { user_email: req.body.user_email } })
+    const user = await User.findOne({ where: { email: req.body.user_email } })
     if (!user) return res.status(400).json({data: {message: 'Invalid email!'}})
 
-    const validPass = await bcrypt.compare(req.body.user_password, user.user_password)
+    const validPass = await bcrypt.compare(req.body.password, user.user_password)
     if (!validPass) return res.status(400).json({data: {message: 'Invalid password!'}})
 
     const bearerToken = JWT.sign({ id: user.user_id }, process.env.SECRET_KEY, { expiresIn: 86400 })
@@ -108,14 +108,7 @@ const login = async (req, res) => {
         user: {
             id: user.user_id,
             user_nama: user.user_nama,
-            // user_email: user.user_email,
-            // user_password: user.user_password,
-            // user_hp: user.user_hp,
-            // user_image: user.user_image,
             user_status: user.user_status,
-            // user_level: role.level_nama,
-            // createdAt: user.createdAt,
-            // updatedAt: user.updatedAt,
         },
         token: bearerToken
     })
