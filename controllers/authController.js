@@ -93,8 +93,8 @@ const register = async (req, res) => {
 }
 
 const login = async (req, res) => {
-    const { error } = authValidation.loginValidation(req.data)
-    if (error) return res.status(400).send(error.details[0].message)
+    const { error } = authValidation.loginValidation(req.body)
+    if (error) return res.status(400).json({data: {message: error.details[0].message}})
 
     const user = await User.findOne({ where: { user_email: req.body.user_email } })
     if (!user) return res.status(400).json({data: {message: 'Invalid email!'}})
