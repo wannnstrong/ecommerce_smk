@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 17 Sep 2022 pada 10.04
+-- Waktu pembuatan: 29 Sep 2022 pada 15.14
 -- Versi server: 10.4.21-MariaDB
 -- Versi PHP: 8.0.10
 
@@ -39,8 +39,8 @@ CREATE TABLE `tb_levels` (
 --
 
 INSERT INTO `tb_levels` (`level_id`, `level_nama`, `createdAt`, `updatedAt`) VALUES
-(1, 'administrator', '2022-09-17 07:58:37', '2022-09-17 07:58:37'),
-(2, 'customer', '2022-09-17 07:58:37', '2022-09-17 07:58:37');
+(1, 'administrator', '2022-09-20 07:13:10', '2022-09-20 07:13:10'),
+(2, 'customer', '2022-09-20 07:13:10', '2022-09-20 07:13:10');
 
 -- --------------------------------------------------------
 
@@ -60,6 +60,13 @@ CREATE TABLE `tb_users` (
   `createdAt` datetime NOT NULL,
   `updatedAt` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `tb_users`
+--
+
+INSERT INTO `tb_users` (`user_id`, `user_nama`, `user_email`, `user_password`, `user_hp`, `user_image`, `user_status`, `user_level`, `createdAt`, `updatedAt`) VALUES
+('6b6b3f3b-ebe7-4115-9eea-18f4c6cd6553', 'admin', 'admin@carakan.id', '$2a$10$c3Ah5qWNn5ZF5WkIeq2.qecggGfYk/ROFcNbOLf49NXnx5WssAO.K', NULL, NULL, 1, 1, '2022-09-21 08:31:54', '2022-09-21 08:31:54');
 
 --
 -- Indexes for dumped tables
