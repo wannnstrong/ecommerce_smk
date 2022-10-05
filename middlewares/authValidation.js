@@ -12,10 +12,10 @@ const registerValidation = (data) => {
 
 const loginValidation = (data) => {
     const schema = Joi.object({
-        user_email: Joi.string().email().min(6).required(),
-        user_password: Joi.string().min(6).required()
+        user_email: Joi.string().email().min(1).max(3).required(),
+        user_password: Joi.number().integer().min(6).required()
     })
-    return schema.validate(data)
+    // return schema.validate(data)
 }
 
 module.exports = {
