@@ -93,6 +93,7 @@ const register = async (req, res) => {
 }
 
 const login = async (req, res) => {
+   try {
     const { error } = authValidation.loginValidation(req.body)
     if (error) return res.status(400).json({data: {message: error.details[0].message}})
 
@@ -119,6 +120,11 @@ const login = async (req, res) => {
         },
         token: bearerToken
     })
+   } catch (error) {
+    res.status(400).json({
+        data:{message: error.message}
+    });
+   }
 }
 
 module.exports = {
