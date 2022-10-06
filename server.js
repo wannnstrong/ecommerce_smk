@@ -5,6 +5,7 @@ const express = require('express')
 const corsOptions = require('./config/corsOptions')
 const credential = require('./middlewares/credential')
 const db = require('./models')
+const User = db.user
 const Role = db.role
 const app = express()
 const PORT = process.env.PORT || 8080
@@ -36,6 +37,16 @@ async function initial() {
     const roles = await Role.findAll({
         logging: false
     });
+    const users = await User.findAll({
+        logging: false
+    })
+    if(users.length<1){
+        User.create({
+            user_nama: 'tester',
+            user_email: 'user@tester.com',
+            user_password: '$2a$10$2vdk8UWgPjXCjn6T3klSJ.88OrpCE/dRqOAf7nY2oPgA6QMO3SCgO'
+        })
+    }
     if(roles.length<1){
         Role.create({
             level_id: 1,
